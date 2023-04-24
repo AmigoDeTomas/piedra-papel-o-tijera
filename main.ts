@@ -1,11 +1,14 @@
 let tool = 0
 input.onGesture(Gesture.Shake, function () {
-    tool = randint(0, 2)
+    radio.sendNumber(randint(0, 3))
+})
+radio.onReceivedString(function (receivedString) {
+    tool = randint(0, 3)
     if (tool == 0) {
         basic.showLeds(`
             . . . . .
             . # # # .
-            . # . # .
+            . # # # .
             . # # # .
             . . . . .
             `)
@@ -16,6 +19,14 @@ input.onGesture(Gesture.Shake, function () {
             # . . . #
             # . . . #
             # # # # #
+            `)
+    } else if (tool == 2) {
+        basic.showLeds(`
+            . # # # .
+            # . # . #
+            # . # . #
+            . . # . .
+            . . # . .
             `)
     } else {
         basic.showLeds(`
@@ -28,5 +39,5 @@ input.onGesture(Gesture.Shake, function () {
     }
 })
 basic.forever(function () {
-	
+    radio.setGroup(666)
 })
