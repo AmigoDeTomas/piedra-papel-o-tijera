@@ -1,6 +1,7 @@
 let tool = 0
 let piedra = 0
 let papel = 0
+let tijera = 0
 input.onGesture(Gesture.Shake, function () {
     radio.sendString("" + (tool))
     tool = randint(0, 2)
@@ -23,7 +24,6 @@ input.onGesture(Gesture.Shake, function () {
             # # # # #
             `)
     } else {
-        let tijera = 0
         radio.sendString("" + (tijera))
         basic.showLeds(`
             # # . . #
@@ -35,7 +35,9 @@ input.onGesture(Gesture.Shake, function () {
     }
 })
 radio.onReceivedString(function (receivedString) {
-    if (piedra) {
+    tool = randint(0, 2)
+    if (tool == 0) {
+        radio.sendString("" + (piedra))
         basic.showLeds(`
             . . . . .
             . # # # .
@@ -43,7 +45,8 @@ radio.onReceivedString(function (receivedString) {
             . # # # .
             . . . . .
             `)
-    } else if (papel) {
+    } else if (tool == 1) {
+        radio.sendString("" + (papel))
         basic.showLeds(`
             # # # # #
             # . . . #
@@ -52,6 +55,7 @@ radio.onReceivedString(function (receivedString) {
             # # # # #
             `)
     } else {
+        radio.sendString("" + (tijera))
         basic.showLeds(`
             # # . . #
             # # . # .
