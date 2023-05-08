@@ -64,6 +64,42 @@ radio.onReceivedString(function (receivedString) {
             # # . . #
             `)
     }
+    if (papel == piedra) {
+        basic.pause(2000)
+        basic.showString("has perdio")
+    }
+    if (tijera == papel) {
+        basic.pause(2000)
+        basic.showString("has perdio")
+    }
+    if (papel == tijera) {
+        basic.pause(2000)
+        basic.showString("has ganao")
+    }
+    if (tijera == piedra) {
+        basic.pause(2000)
+        basic.showString("has ganao")
+    }
+    if (piedra == papel) {
+        basic.pause(2000)
+        basic.showString("has perdio")
+    }
+    if (piedra == tijera) {
+        basic.pause(2000)
+        basic.showString("has perdio")
+    }
+    if (piedra == piedra) {
+        basic.pause(2000)
+        basic.showString("has empatao")
+    }
+    if (papel == papel) {
+        basic.pause(2000)
+        basic.showString("has empatao")
+    }
+    if (tijera == tijera) {
+        basic.pause(2000)
+        basic.showString("has empatao")
+    }
 })
 basic.forever(function () {
     radio.setGroup(666)
